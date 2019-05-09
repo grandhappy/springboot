@@ -27,7 +27,19 @@ public class SecurityController {
         return "noauth";
     }
 
+    //==========step2:需要token，需要权限校验===========
+    //需要token，需要common角色
+    @GetMapping("/security/common")
+    String common(){
+        return "security common";
+    }
+    //需要token，需要admin角色
+    @GetMapping("/security/manager")
+    String manager(){
+        return "security manager";
+    }
 
+    //==========step3:需要token，不需要权限校验===========
     @GetMapping("/security/needauth")
     String auth(){
         return "needauth";
