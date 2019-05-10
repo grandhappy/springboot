@@ -34,7 +34,7 @@ a journey to study springboot
     @AutoConfigureMockMvc is used for autowiring beans
     ======================================================
   
-  ##springsecurity + jwt
+  ##springsecurity
    ###step1 jwt
     jwt is json  web token
     How to integrate springsecurity and jwt?
@@ -107,3 +107,15 @@ a journey to study springboot
       Before the third step,request '/security/needauth' interface do not required any permissions.
       How to solve this bugs???
         Latter...
+        
+ ##swagger2
+   ###step1 swagger
+     swagger is a platform for API Design and Documentation with OpenAPI
+     How to integrate swagger?
+         1.import sspringfox-swagger2 and springfox-swagger-ui in pom file
+         2.new Swagger2Config.java is using for configing swagger
+         3.new SwaggerController.java using for defining swagger interface
+         4.add url-mapping without jwt and permissions checking
+     How to test swagger?
+          entry http://localhost/swagger-ui.html in your brower
+          
