@@ -6,27 +6,38 @@ package cn.net.sexygirls.exception;
  * @Date: 2019/5/7
  */
 public class BaseException extends RuntimeException{
-    private String errorCode;
-    private String errorMsg;
+    private Integer code;
+    private String message;
 
-    public BaseException(String errorCode, String errorMsg) {
-        this.errorCode = errorCode;
-        this.errorMsg = errorMsg;
+    public BaseException() {
+        super();
     }
 
-    public String getErrorCode() {
-        return errorCode;
+    public BaseException(String message) {
+        super(message);
+        this.message=message;
     }
 
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
+    public BaseException(Integer code, String message) {
+        super(message);
+        this.code = code;
+        this.message = message;
     }
 
-    public String getErrorMsg() {
-        return errorMsg;
+    public Integer getCode() {
+        return code;
     }
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

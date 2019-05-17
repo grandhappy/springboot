@@ -1,4 +1,4 @@
-package cn.net.sexygirls.config;
+package cn.net.sexygirls.config.swagger;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +39,7 @@ public class Swagger2Config {
                 // 是否开启
                 .enable(swaggerEnabled).select()
                 //扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("cn.net.sexygirls.controller.swagger"))
+                .apis(RequestHandlerSelectors.basePackage("cn.net.sexygirls.controller"))
                 // 指定路径处理PathSelectors.any()代表所有的路径
                 .paths(PathSelectors.any()).build().pathMapping("/");
     }
