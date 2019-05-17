@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestfullController {
     @RequestMapping("/index")
     String index(){
-        return "hello world";
+        return "hello new world";
     }
 }

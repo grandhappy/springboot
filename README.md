@@ -165,3 +165,18 @@
               "roles": null
               }
       }
+## devtools
+   *devtools is a developer auto-compile tools,when you modify a java or html without compile you program. you do not restart your project.*
+   
+   *how to import devtools?*
+   1. import spring-boot-devtools in  your pom file
+   2. config spring.devtools.start.enable param in your application.properties
+   
+   *how to test?*
+   1. curl http://127.0.0.1:8080/index
+      
+     hello world
+   2. modify return result to 'hello new world' in IndexController.java
+   3. after 5s, curl http://127.0.0.1/index
+     
+     hello new world

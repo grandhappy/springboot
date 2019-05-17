@@ -19,10 +19,10 @@ import java.io.Serializable;
 @ApiModel(value="返回结果实体类",description="返回结果实体类")
 public class Result<T> implements Serializable {
     @ApiModelProperty(value = "状态码,0表示成功 其他表示失败", example = "0")
-    private int status;
+    private int code;
 
     @ApiModelProperty(value = "提示信息", example = "ADS_SUCCESS")
-    private String message = "";
+    private String message;
 
     @ApiModelProperty(value = "数据", example = "")
     private T data;
@@ -35,12 +35,12 @@ public class Result<T> implements Serializable {
         this.data = data;
     }
 
-    public int getStatus() {
-        return status;
+    public int getCode() {
+        return code;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public String getMessage() {
@@ -54,8 +54,8 @@ public class Result<T> implements Serializable {
     public Result() {
     }
 
-    private Result(int status, String message, T data) {
-        this.status = status;
+    private Result(int code, String message, T data) {
+        this.code = code;
         this.message = message;
         this.data = data;
     }
@@ -65,12 +65,12 @@ public class Result<T> implements Serializable {
     }
 
     public static class ResultBuiler<T>{
-        private int status;
+        private int code;
         private String message;
         private T data;
 
-        public Result.ResultBuiler<T> status(int status){
-            this.status = status;
+        public Result.ResultBuiler<T> code(int code){
+            this.code = code;
             return this;
         }
 
@@ -85,7 +85,7 @@ public class Result<T> implements Serializable {
         }
 
         public Result<T> build(){
-            return new Result<T>(this.status,this.message,this.data);
+            return new Result<T>(this.code,this.message,this.data);
         }
     }
 }
