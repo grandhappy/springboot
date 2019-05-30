@@ -180,3 +180,29 @@
    3. after 5s, curl http://127.0.0.1/index
      
      hello new world
+## lombok
+   *Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.
+    Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more.*
+    
+   *how to import lombok?*
+   1. import spring-boot-devtools in  your pom file
+   2. create domain object Lombok.java with @Getter,@Setter@Getter without writing function setter() and getter()
+   3. create LombokController.java to test
+   
+   *how to test?*
+   1. curl http://127.0.0.1:8080/lombok
+   
+    {
+     "username": "lucy",
+     "age": 13
+     }
+  
+   *main points*
+   - @Getter and @Setter
+   - @NonNull  
+   - @ToString
+   - @EqualsAndHashCode
+   - @Data
+   - @Cleanup
+   - @Synchronized
+   - @SneakyThrows  

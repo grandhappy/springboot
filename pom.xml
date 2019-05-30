@@ -65,6 +65,12 @@
       <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖boot项目的项目如果想要使用devtools，需要重新引入 -->
       <optional>true</optional>
     </dependency>
+    <!--lombok-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.10</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -74,6 +80,10 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <!--if ture,devtool is working-->
+          <fork>true</fork>
+        </configuration>
       </plugin>
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
