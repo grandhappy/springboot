@@ -206,3 +206,38 @@
    - @Cleanup
    - @Synchronized
    - @SneakyThrows  
+   
+## JPA
+  *Spring Data JPA, part of the larger Spring Data family, makes it easy to easily implement JPA based repositories. This module deals with enhanced support for JPA based data access layers. It makes it easier to build Spring-powered applications that use data access technologies.*
+  
+  *Jpa is not orm framework,this is a specification for operate db.*
+
+  *how to import jpa?*
+   1. import dependence in pom, contains spring-boot-starter-data-jpa and mysql-connector-java.
+   2. config db info,jpa info,connection pool info in application.properties
+   3. code UserRepository extends JpaRepository interface
+   4. code JpaController to test 
+   5. create User entity mapping table user in db
+   6. create table in db                                      
+  
+  *how to test?*
+  1. curl -X POST http://127.0.0.1:8080/jpa/user -d 'name=tom&password=123456'
+    
+    {
+        "id":11,
+        "name":"tom",
+        "password":"123456",
+        "status":1
+     }
+
+  2. curl -X DELETE http://127.0.0.1:8080/jpa/user -d 'id=9'
+    
+    success
+  3. curl -X PUT http://127.0.0.1:8080/jpa/user -d 'id=8&name=tomcat'
+  
+    {
+          "id":8,
+          "name":"tomcat",
+          "password":"123456",
+          "status":1
+       }

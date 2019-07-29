@@ -1,17 +1,26 @@
 package cn.net.sexygirls.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 /**
  * @Description:用户类
  * @Author: zule
  * @Date: 2019/5/6
  */
-public class User{
-
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
+@Entity
+@Table(name = "user")
+public class User implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	private String password;
 	private Integer status;
+	@Transient
 	private List<Role> roles;
 
     public User() {
@@ -23,7 +32,6 @@ public class User{
 		this.password = password;
 		this.status = status;
 	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -63,4 +71,6 @@ public class User{
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+
+
 }
