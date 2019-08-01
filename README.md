@@ -209,7 +209,7 @@
    
 ## JPA
   *Spring Data JPA, part of the larger Spring Data family, makes it easy to easily implement JPA based repositories. This module deals with enhanced support for JPA based data access layers. It makes it easier to build Spring-powered applications that use data access technologies.*
-  
+  ### part 1
   *Jpa is not orm framework,this is a specification for operate db.*
 
   *how to import jpa?*
@@ -219,7 +219,16 @@
    4. code JpaController to test 
    5. create User entity mapping table user in db
    6. create table in db                                      
-  
+  ```
+  CREATE TABLE `user` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+    `password` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+    `status` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+  ```
   *how to test?*
   1. curl -X POST http://127.0.0.1:8080/jpa/user -d 'name=tom&password=123456'
     
@@ -241,3 +250,56 @@
           "password":"123456",
           "status":1
        }
+  ### part 2
+   *how to query by columns?*
+   
+   1. code jpa supplying method name in UserRespository.java
+   2. code JpaController to test                              
+     
+   *how to test?*
+     
+   1. insert example record into db
+      ```
+      DELETE FROM `test`.`user`;
+      INSERT INTO `test`.`user` (`id`, `name`, `password`, `status`) VALUES ('1', 'hbase', '123456', '0');
+      INSERT INTO `test`.`user` (`id`, `name`, `password`, `status`) VALUES ('2', 'hbase', '111111', '1');
+      INSERT INTO `test`.`user` (`id`, `name`, `password`, `status`) VALUES ('3', 'access', '123321', '0');
+      INSERT INTO `test`.`user` (`id`, `name`, `password`, `status`) VALUES ('4', 'postgresql', '123321', '0');
+      INSERT INTO `test`.`user` (`id`, `name`, `password`, `status`) VALUES ('5', 'oracle', '222222', '0');
+      INSERT INTO `test`.`user` (`id`, `name`, `password`, `status`) VALUES ('6', 'mongo', '654321', '0');
+      INSERT INTO `test`.`user` (`id`, `name`, `password`, `status`) VALUES ('7', 'redis', '000000', '0');
+      INSERT INTO `test`.`user` (`id`, `name`, `password`, `status`) VALUES ('8', 'mysql', '666666', '2');
+
+      ```     
+   2. curl -X GET http://127.0.0.1:8080/jpa/user
+       ```
+       the result findByName("hbase") is:[{"id":1,"name":"hbase","password":"123456","status":0},{"id":2,"name":"hbase","password":"111111","status":1}]
+       the result findByNameAndStatus("hbase",1) is:[{"id":2,"name":"hbase","password":"111111","status":1}]
+       the result findByNameLike("%sql%") is:[{"id":4,"name":"postgresql","password":"123321","status":0},{"id":8,"name":"mysql","password":"666666","status":2}]
+       the result findByStatusIn(statusList) is:[{"id":2,"name":"hbase","password":"111111","status":1},{"id":8,"name":"mysql","password":"666666","status":2}]
+       ```
+  ### part 3
+   *how to query using self-define sql?*
+   
+   1. code jpa self-define method name in UserRespository.java, need to import Query.
+   2. code /user/native interface to test in JpaController.java.                              
+     
+   *how to test?*
+     
+   1. curl -X GET http://127.0.0.1:8080/jpa/user/native
+       ```
+       the result findByTwoName("hbase","mysql") is:[{"id":1,"name":"hbase","password":"123456","status":0},{"id":2,"name":"hbase","password":"111111","status":1},{"id":8,"name":"mysql","password":"666666","status":2}]
+       ```
+  ### part 4
+   *how to use join query?*
+   
+   1. create entity many_to_many relationship in User.java and Role.java
+   2. UserRespository.java extends JpaSpecificationExecutor.java
+   3. code UserServiceImpl.java using function findAll(Specification<T> var1) 
+   4. code /user/josin2 interface to test in JpaController.java.                              
+     
+   *how to test?*
+   1. curl -X GET http://127.0.0.1:8080/jpa/user/join2
+       ```
+       the result joinQuery("admin",1) is:[{"id":2,"name":"hbase","password":"111111","roles":[{"id":1,"name":"admin","users":[{"id":1,"name":"hbase","password":"123456","roles":[{"$ref":"$[0].roles[0]"}],"status":0},{"$ref":"$[0]"},{"id":3,"name":"access","password":"123321","roles":[{"$ref":"$[0].roles[0]"}],"status":0},{"id":4,"name":"postgresql","password":"123321","roles":[{"$ref":"$[0].roles[0]"}],"status":0}]}],"status":1}]
+       ```

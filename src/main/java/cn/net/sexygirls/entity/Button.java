@@ -1,4 +1,4 @@
-package cn.net.sexygirls.entity.user;
+package cn.net.sexygirls.entity;
 
 /**
  * @Description:按钮类，暂时没有

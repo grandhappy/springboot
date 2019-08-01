@@ -1,4 +1,4 @@
-package cn.net.sexygirls.entity.user;
+package cn.net.sexygirls.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,7 +20,10 @@ public class User implements Serializable {
 	private String name;
 	private String password;
 	private Integer status;
-	@Transient
+
+	@ManyToMany
+	@JoinTable(name = "role_user",joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
 
     public User() {

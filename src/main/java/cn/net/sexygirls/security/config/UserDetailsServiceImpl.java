@@ -1,8 +1,8 @@
 package cn.net.sexygirls.security.config;
 
-import cn.net.sexygirls.entity.user.Menu;
-import cn.net.sexygirls.entity.user.Role;
-import cn.net.sexygirls.entity.user.User;
+import cn.net.sexygirls.entity.Menu;
+import cn.net.sexygirls.entity.Role;
+import cn.net.sexygirls.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

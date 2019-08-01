@@ -1,7 +1,7 @@
 package cn.net.sexygirls.security.config;
 
-import cn.net.sexygirls.entity.user.Menu;
-import cn.net.sexygirls.entity.user.Role;
+import cn.net.sexygirls.entity.Menu;
+import cn.net.sexygirls.entity.Role;
 import cn.net.sexygirls.utils.security.UrlMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;

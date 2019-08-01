@@ -1,11 +1,10 @@
 package cn.net.sexygirls.controller.exception;
 
-import cn.net.sexygirls.entity.user.User;
+import cn.net.sexygirls.entity.User;
 import cn.net.sexygirls.exception.ForbiddenException;
 import cn.net.sexygirls.exception.NotExistedException;
 import cn.net.sexygirls.exception.ParamErrorException;
 import cn.net.sexygirls.model.Result;
-import cn.net.sexygirls.utils.common.ResponseUtil;
 import cn.net.sexygirls.utils.common.ResultEnum;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

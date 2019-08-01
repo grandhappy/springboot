@@ -1,6 +1,6 @@
 package cn.net.sexygirls.controller.swagger;
 
-import cn.net.sexygirls.entity.user.User;
+import cn.net.sexygirls.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

@@ -1,17 +1,34 @@
-package cn.net.sexygirls.entity.user;
+package cn.net.sexygirls.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.context.annotation.Lazy;
+
+import javax.persistence.*;
 import java.util.List;
 /**
  * @Description:角色类
  * @Author: zule
  * @Date: 2019/5/6
  */
-public class Role  {
 
+@Table
+@Entity
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
+public class Role  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
     private String name;
+    @Transient
     private List<Menu> menus;
+
+    @Lazy
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
+
+    public Role() {
+    }
 
     public Role(Integer id, String name) {
         this.id = id;
@@ -40,5 +57,13 @@ public class Role  {
 
     public void setMenus(List<Menu> menus) {
         this.menus = menus;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

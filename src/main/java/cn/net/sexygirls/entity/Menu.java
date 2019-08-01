@@ -1,4 +1,4 @@
-package cn.net.sexygirls.entity.user;
+package cn.net.sexygirls.entity;
 
 import java.util.List;
 /**

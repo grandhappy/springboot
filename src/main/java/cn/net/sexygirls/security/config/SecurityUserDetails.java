@@ -1,7 +1,7 @@
 package cn.net.sexygirls.security.config;
 
-import cn.net.sexygirls.entity.user.Role;
-import cn.net.sexygirls.entity.user.User;
+import cn.net.sexygirls.entity.Role;
+import cn.net.sexygirls.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
