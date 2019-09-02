@@ -1,5 +1,6 @@
 package cn.net.sexygirls;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,7 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date: 2019/5/5
  */
 @SpringBootApplication
-public class App 
+@MapperScan("cn.net.sexygirls.dao.mapper")
+public class App
 {
     public static void main( String[] args )
     {
