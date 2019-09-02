@@ -303,3 +303,30 @@
        ```
        the result joinQuery("admin",1) is:[{"id":2,"name":"hbase","password":"111111","roles":[{"id":1,"name":"admin","users":[{"id":1,"name":"hbase","password":"123456","roles":[{"$ref":"$[0].roles[0]"}],"status":0},{"$ref":"$[0]"},{"id":3,"name":"access","password":"123321","roles":[{"$ref":"$[0].roles[0]"}],"status":0},{"id":4,"name":"postgresql","password":"123321","roles":[{"$ref":"$[0].roles[0]"}],"status":0}]}],"status":1}]
        ```
+## Mybatis
+  *MyBatis is a first class persistence framework with support for custom SQL, stored procedures and advanced mappings. MyBatis eliminates almost all of the JDBC code and manual setting of parameters and retrieval of results. MyBatis can use simple XML or Annotations for configuration and map primitives, Map interfaces and Java POJOs (Plain Old Java Objects) to database records*
+  *website:http://www.mybatis.org/mybatis-3/index.html*
+  ### part 1
+  *how to import mybatis?*
+   1. import dependence in pom, contains mybatis-spring-boot-starter.
+   2. config mybatis-config.xml in application.properties and writing mybatis-config.xml
+   3. code UserMapper.java UserMapper.xml
+   4. config  mapperScan in App.java
+   5. code UserMapperTest.java to test using junit
+  *how to test?*
+  1. curl -X GET http://127.0.0.1:8080/mybatis/user'
+   
+    {
+        "id":11,
+        "name":"tom",
+        "password":"123456",
+        "status":1
+     }
+     
+  ### part 2
+    *how to generate mapper automatically?*
+     1. import plugin in pom,using mybatis-generator-maven-plugin:1.3.6:generate.
+     2. config mybatis-generator.xml to define db connection,tables,packages.
+     3. double click mybatis-generator plugin.
+     4. check our floder.
+
