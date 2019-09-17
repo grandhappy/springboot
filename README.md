@@ -314,19 +314,38 @@
    4. config  mapperScan in App.java
    5. code UserMapperTest.java to test using junit
   *how to test?*
-  1. curl -X GET http://127.0.0.1:8080/mybatis/user'
-   
+  1. curl -X GET http://127.0.0.1:8080/mybatis/user
+  ```
     {
         "id":11,
         "name":"tom",
         "password":"123456",
         "status":1
      }
-     
+  ```
   ### part 2
     *how to generate mapper automatically?*
      1. import plugin in pom,using mybatis-generator-maven-plugin:1.3.6:generate.
      2. config mybatis-generator.xml to define db connection,tables,packages.
      3. double click mybatis-generator plugin.
      4. check our floder.
-
+     ![folder tree](https://github.com/grandhappy/springboot/tree/master/images/mybatis_1.png)
+     
+  ## Redis
+   *Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.*
+   
+   *website:https://redis.io* 
+   ### part 1
+   *how to import redis?*
+   1. import spring-boot-starter-data-redis dependence in pom 
+   2. config redis in application.properties
+   3. code RedisController.java to test
+   *how to test?*
+   1. open redis-client,exec commond 'set news {code:200,message:\local:0>"success\"}' 
+   2. curl -X GET http://127.0.0.1:8080/redis
+   ```
+   {
+    	code: 200,
+    	message: "success"
+   }
+   ```
