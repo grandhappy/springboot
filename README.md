@@ -341,11 +341,30 @@
    2. config redis in application.properties
    3. code RedisController.java to test
    *how to test?*
-   1. open redis-client,exec commond 'set news {code:200,message:\local:0>"success\"}' 
+   1. open redis-client,exec commond 'set news {code:200,message:\"success\"}' 
    2. curl -X GET http://127.0.0.1:8080/redis
    ```
    {
     	code: 200,
     	message: "success"
+   }
+   ```
+   ## Mongo
+   *MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. No database is more productive to use.*  
+   *website:https://docs.mongodb.com/* 
+   ### part 1
+   *how to import mongo?*
+   1. import spring-boot-starter-data-mongodb dependence in pom 
+   2. config mongo in application.properties
+   3. code MongoController.java to test
+   *how to test?*
+   1. curl -X GET http://127.0.0.1:8080/mongo
+   ```
+   {
+       id: 111,
+       name: "test",
+       password: "123456",
+       status: null,
+       roles: null
    }
    ```
