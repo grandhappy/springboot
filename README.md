@@ -368,3 +368,21 @@
        roles: null
    }
    ```
+   
+   ## HystrixController
+      *Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.*  
+      *website:https://github.com/Netflix/Hystrix* 
+      ### part 1
+      *how to import Hystrix?*
+      1. import spring-cloud-starter-netflix-hystrix dependence in pom 
+      2. add HystrixConfiguration 
+      3. code HystrixController.java to test
+      *how to test?*
+      1. curl -X GET http://127.0.0.1:8080/hystrix/index
+      ```
+      hello new world
+      ```
+      1. curl -X GET http://127.0.0.1:8080/hystrix/index1
+      ```
+      hello new world1
+      ```
